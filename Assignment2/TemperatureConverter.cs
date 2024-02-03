@@ -51,15 +51,33 @@ namespace Assignment2
         }
 
         private int ReadInput()
-        { 
-            int i = 1;
-            return i;
+        {
+            Console.WriteLine($"\nChoose one of the options below");
+            Console.WriteLine($"\n0. Exit application");
+            Console.WriteLine($"\n1. Convert from Fahrenheit to Celsius");
+            Console.WriteLine($"\n2. Convert from Celsius to Fahrenheit");
+            int option;
+            bool ok = int.TryParse(Console.ReadLine(), out option);
+            if(!ok)
+            {
+                Console.Clear();
+                ReadInput(); // This will cause recursion, fix!!!
+            }
+            else
+            {
+                if(option < 0 || option > 2)
+                {
+                    Console.Clear();
+                    ReadInput(); // This will cause recursion, fix!!!
+                }
+            }
+            return option;
         }
 
         public void Run()
         { 
-            int option = ReadInput();
-            PresentData(option);
+            PresentData(ReadInput());
+            Run();
         }
     }
 }

@@ -5,8 +5,10 @@
         static void Main(string[] args)
         {
             TemperatureConverter temperatureConverter = new();
+            StringFunctions stringFunctions = new();
 
-            temperatureConverter.Run();
+            //temperatureConverter.Run();
+            stringFunctions.Run();
         }
     }
 }
