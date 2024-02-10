@@ -1,43 +1,77 @@
-﻿using Microsoft.VisualBasic.FileIO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/// < summary >
+/// Filename: StringFunctions.cs
+/// Created on: 2024-02-01 00:00:00
+/// Author: Samuel Jeffman
+/// </summary>
 
 namespace Assignment2
 {
+    /// <summary>
+    /// Class StringFunctions
+    /// </summary>
     internal class StringFunctions
     {
-        private string? inputString;
+        /// <summary>
+        /// Get length of input string as int
+        /// </summary>
+        /// <param name="inputString"></param>
+        /// <returns></returns>
         public static int GetStringLength(string inputString)
         {
             return inputString.Length;
         }
 
+        /// <summary>
+        /// Convert input string to uppercase
+        /// </summary>
+        /// <param name="inputString"></param>
+        /// <returns></returns>
         public static string ConvertStringToUpperCase(string inputString)
         { 
-            return inputString.ToUpper(); 
+            return inputString.ToUpper();
         }
 
-        public void PredictMyDay()
+        /// <summary>
+        /// Read input as Integer and do checks for datatype and in range.
+        /// </summary>
+        /// <param name="rangeStart"></param>
+        /// <param name="rangeEnd"></param>
+        /// <returns></returns>
+        private static int ReadInteger(int rangeStart, int rangeEnd)
         {
-            Console.WriteLine("Enter what day of the week it is(1-7)");
-            int option;
-            bool ok = int.TryParse(Console.ReadLine(), out option);
-            if (!ok)
+            int rangeCount = rangeEnd - rangeStart + 1;
+            int input;
+            bool isInt;
+            bool inRange = false;
+            do
             {
-                Console.Clear();
-                PredictMyDay(); // This will cause recursion, fix!!!
-            }
-            else
-            {
-                if (option < 1 || option > 7)
+                string? str = Console.ReadLine();
+                isInt = int.TryParse(str, out input);
+                if (!isInt)
                 {
-                    Console.Clear();
-                    PredictMyDay(); // This will cause recursion, fix!!!
+                    Console.WriteLine("Invalid number!");
+                }
+                else
+                {
+                    inRange = Enumerable.Range(rangeStart, rangeCount).Contains(input);
+                    if (!inRange)
+                    {
+                        Console.WriteLine($"Value out of range ({rangeStart}-{rangeEnd})!");
+                    }
                 }
             }
+            while (!isInt || !inRange); //Continue until input is of datatype int and value is in range.
+            return input;
+        }
+
+        /// <summary>
+        /// Method returns a humorous remark as string depending on what day it is
+        /// </summary>
+        public static void PredictMyDay()
+        {
+            Console.WriteLine("Enter what day of the week it is(1-7)");
+            int option = ReadInteger(1,7);
+
             string data;
             switch(option)
             {
@@ -46,7 +80,7 @@ namespace Assignment2
                     break;
                 case 2:
                 case 3:
-                    data = "Tuesdays and Wednesdays are to cool for school!";
+                    data = "Tuesdays and Wednesdays are too cool for school!";
                     break;
                 case 4:
                     data = "Better get to work, it's Thursday already!";
@@ -67,25 +101,44 @@ namespace Assignment2
             Console.WriteLine($"Here's one for you:\n{data}");
         }
 
-
-        public void ReadInput()
+        /// <summary>
+        /// Read console input
+        /// </summary>
+        /// <returns></returns>
+        private static string ReadInput()
         {
+            string? inputString;
             Console.WriteLine("Enter some text to evaluate:");
             inputString = Console.ReadLine()?.ToString();
+
+            if (inputString == null)
+            {
+                inputString = "String was 'null'";
+            }
+
+            return inputString;
         }
 
-        public void PresentInfo()
+        /// <summary>
+        /// Presents information about the input string
+        /// </summary>
+        /// <param name="inputString"></param>
+        public static void PresentStringInfo(string inputString)
         {
             int length = GetStringLength(inputString);
             string uppercase = ConvertStringToUpperCase(inputString);
             Console.WriteLine($"String length is: {length} and the string in upper case: {uppercase}");
         }
 
-        public void RunAgain()
+        /// <summary>
+        /// Figure out if we should run again or not
+        /// </summary>
+        /// <returns></returns>
+        public static int RunAgain()
         {
-            Console.WriteLine("Continue(y/n)?");
+            Console.WriteLine("Run again(y/n)?");
             string? answer = Console.ReadLine();
-
+            //maybe a do while here??????????????????????????????????????????????????????????
             if (answer != null)
             {
                 answer = answer?.Trim();
@@ -96,20 +149,27 @@ namespace Assignment2
             if ((response == 'y') || (response == 'Y'))
             {
                 Console.Clear();
-                Run();
+                return 1; //Run again
             }
             else
             {
-                Environment.Exit(0);
+                return 0; //Exit
             }
         }
 
+        /// <summary>
+        /// Execute methods of the class
+        /// </summary>
         public void Run()
         {
-            ReadInput();
-            PresentInfo();
-            PredictMyDay();
-            RunAgain();
+            int option;
+            do
+            {
+                PresentStringInfo(ReadInput());
+                PredictMyDay();
+                option = RunAgain();
+            }
+            while (option != 0);
         }
     }
 }
