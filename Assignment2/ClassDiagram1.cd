@@ -3,35 +3,35 @@
   <Class Name="Assignment2.MathWorks">
     <Position X="5.75" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAIAAAAAAACGAEAAAAAACABAIAAAgCAAAAAAAA=</HashCode>
       <FileName>MathWorks.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Assignment2.Program">
     <Position X="0.5" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Assignment2.Scheduler">
     <Position X="7.5" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>ACAUAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAIAAAAAI=</HashCode>
       <FileName>Scheduler.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Assignment2.StringFunctions">
     <Position X="4" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAACAQAAAAAEAIAEAABAAAAAAAAAAAAAAAAAAAAI=</HashCode>
       <FileName>StringFunctions.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Assignment2.TemperatureConverter">
     <Position X="2.25" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAAAAACAAAAAAAACCAAAAAgAAAAAAAAAAAAAAAgAAAI=</HashCode>
+      <HashCode>CAAgAACAAAAAAAACCAEAAAgAAAAAAAAAAAAAAAgAAAI=</HashCode>
       <FileName>TemperatureConverter.cs</FileName>
     </TypeIdentifier>
   </Class>
