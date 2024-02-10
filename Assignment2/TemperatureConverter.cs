@@ -42,7 +42,8 @@ namespace Assignment2
             Console.WriteLine("\nConverting Fahrenheit to Celsius:\n");
             do
             {
-                Console.WriteLine($"{fahrenheit}°F:{ConvertFtoC(fahrenheit):f2}°C");
+                //Console.WriteLine($"{fahrenheit}°F:{ConvertFtoC(fahrenheit):f2}°C");
+                Console.WriteLine("{0,16:f2} °F = {1,6:f2} °C", fahrenheit, ConvertFtoC(fahrenheit));
                 fahrenheit += interval;
             }
             while (fahrenheit <= limit);
@@ -65,7 +66,8 @@ namespace Assignment2
             Console.WriteLine("\nConverting Celsius to Fahrenheit:\n");
             do
             {
-                Console.WriteLine($"{celsius}°C:{ConvertCtoF(celsius):f2}°F");
+                //Console.WriteLine($"{celsius}°C:{ConvertCtoF(celsius):f2}°F");
+                Console.WriteLine("{0,16:f2} °C = {1,6:f2} °F", celsius, ConvertCtoF(celsius));
                 celsius += interval;
             }
             while (celsius <= limit);
@@ -144,7 +146,7 @@ namespace Assignment2
             Console.WriteLine($"\nChoose one of the options below\n");
             Console.WriteLine($"1. Convert from Fahrenheit to Celsius");
             Console.WriteLine($"2. Convert from Celsius to Fahrenheit");
-            Console.WriteLine($"0. Exit application\n");
+            Console.WriteLine($"0. Quit\n");
             int option = ReadInteger(0,2);
             return option;
         }
