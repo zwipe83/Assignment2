@@ -44,7 +44,6 @@ namespace Assignment2
             int start = range[0];
             int end = range[1];
             string even = "";
-            Console.WriteLine("\nPrinting even numbers:");
             for (int i = start; i <= end; ++i)
             {
                 even += (i % 2 == 0) ? $"{i} " : "";
@@ -62,12 +61,11 @@ namespace Assignment2
             int start = range[0];
             int end = range[1];
             string odd = "";
-            Console.WriteLine("\nPrinting odd numbers:");
             for (int i = start; i <= end; ++i)
             {
                 odd += (i % 2 != 0) ? $"{i} " : "";
             }
-            Console.WriteLine($"Odd numbers between {start} and {end}:\n{odd}");
+            Console.WriteLine($"\nOdd numbers between {start} and {end}:\n{odd}");
         }
 
         /// <summary>
