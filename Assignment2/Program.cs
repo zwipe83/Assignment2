@@ -1,7 +1,18 @@
-﻿namespace Assignment2
+﻿/// < summary >
+/// Filename: Program.cs
+/// Created on: 2024-02-01 00:00:00
+/// Author: Samuel Jeffman
+/// </summary>
+/// 
+
+namespace Assignment2
 {
     internal class Program
     {
+        /// <summary>
+        /// Main method
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             TemperatureConverter temperatureConverter = new ();
