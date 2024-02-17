@@ -3,6 +3,8 @@
 /// Created on: 2024-02-01 00:00:00
 /// Author: Samuel Jeffman
 /// </summary>
+/// 
+using Utilities;
 
 namespace Assignment2
 {
@@ -16,7 +18,7 @@ namespace Assignment2
         /// </summary>
         /// <param name="inputString"></param>
         /// <returns></returns>
-        public static int GetStringLength(string inputString)
+        private static int GetStringLength(string inputString)
         {
             return inputString.Length;
         }
@@ -26,51 +28,19 @@ namespace Assignment2
         /// </summary>
         /// <param name="inputString"></param>
         /// <returns></returns>
-        public static string ConvertStringToUpperCase(string inputString)
+        private static string ConvertStringToUpperCase(string inputString)
         { 
             return inputString.ToUpper();
         }
 
         /// <summary>
-        /// Read input as Integer and do checks for datatype and in range.
-        /// </summary>
-        /// <param name="rangeStart"></param>
-        /// <param name="rangeEnd"></param>
-        /// <returns></returns>
-        private static int ReadInteger(int rangeStart, int rangeEnd)
-        {
-            int rangeCount = rangeEnd - rangeStart + 1;
-            int input;
-            bool isInt;
-            bool inRange = false;
-            do
-            {
-                string? str = Console.ReadLine();
-                isInt = int.TryParse(str, out input);
-                if (!isInt)
-                {
-                    Console.WriteLine("Invalid number!");
-                }
-                else
-                {
-                    inRange = Enumerable.Range(rangeStart, rangeCount).Contains(input);
-                    if (!inRange)
-                    {
-                        Console.WriteLine($"Value out of range ({rangeStart}-{rangeEnd})!");
-                    }
-                }
-            }
-            while (!isInt || !inRange); //Continue until input is of datatype int and value is in range.
-            return input;
-        }
-
-        /// <summary>
         /// Method returns a humorous remark as string depending on what day it is
         /// </summary>
-        public static void PredictMyDay()
+        private static void PredictMyDay()
         {
-            Console.WriteLine("Enter what day of the week it is(1-7)");
-            int option = ReadInteger(1,7);
+            Console.WriteLine("\n\n**********Fortune teller**********\n");
+            Console.WriteLine("\nEnter what day of the week it is(1-7):");
+            int option = Utilities.Utils.ReadInteger(1,7);
 
             string data;
             switch(option)
@@ -123,7 +93,7 @@ namespace Assignment2
         /// Presents information about the input string
         /// </summary>
         /// <param name="inputString"></param>
-        public static void PresentStringInfo(string inputString)
+        private static void PresentStringInfo(string inputString)
         {
             int length = GetStringLength(inputString);
             string uppercase = ConvertStringToUpperCase(inputString);
@@ -131,45 +101,17 @@ namespace Assignment2
         }
 
         /// <summary>
-        /// Figure out if we should run again or not
-        /// </summary>
-        /// <returns></returns>
-        public static int RunAgain()
-        {
-            Console.WriteLine("Run again(y/n)?");
-            string? answer = Console.ReadLine();
-            //maybe a do while here??????????????????????????????????????????????????????????
-            if (answer != null)
-            {
-                answer = answer?.Trim();
-            }
-
-            char response = ((answer is not null && answer.Length > 0) ? answer[0] : '\0');
-
-            if ((response == 'y') || (response == 'Y'))
-            {
-                Console.Clear();
-                return 1; //Run again
-            }
-            else
-            {
-                return 0; //Exit
-            }
-        }
-
-        /// <summary>
         /// Execute methods of the class
         /// </summary>
         public void Run()
         {
-            int option;
             do
             {
+                Console.WriteLine("**********String functions**********\n\n");
                 PresentStringInfo(ReadInput());
                 PredictMyDay();
-                option = RunAgain();
             }
-            while (option != 0);
+            while (!Utilities.Utils.RunAgain());
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Assignment2
     /// <summary>
     /// Class TemperatureConverter
     /// </summary>
-    public class TemperatureConverter
+    internal class TemperatureConverter
     {
         /// <summary>
         /// Convert Celsius value to Fahrenheit
@@ -104,50 +104,21 @@ namespace Assignment2
         }
 
         /// <summary>
-        /// Read input as Integer and do checks for datatype and in range.
-        /// </summary>
-        /// <param name="rangeStart"></param>
-        /// <param name="rangeEnd"></param>
-        /// <returns></returns>
-        private int ReadInteger(int rangeStart, int rangeEnd)
-        {
-            int rangeCount = rangeEnd - rangeStart + 1;
-            int input;
-            bool isInt;
-            bool inRange = false;
-            do
-            {
-                string? str = Console.ReadLine();
-                isInt = int.TryParse(str, out input);
-                if (!isInt)
-                {
-                    Console.WriteLine("Invalid number!");
-                }
-                else
-                {
-                    inRange = Enumerable.Range(rangeStart, rangeCount).Contains(input);
-                    if(!inRange)
-                    {
-                        Console.WriteLine($"Value out of range ({rangeStart}-{rangeEnd})!");
-                    }
-                }
-            }
-            while (!isInt || !inRange); //Continue until input is of datatype int and value is in range.
-            return input;
-        }
-
-        /// <summary>
         /// Read input from console
         /// </summary>
         /// <returns></returns>
         private int ReadInput()
         {
             Console.Clear();
+            Console.WriteLine($"\n*********************************");
+            Console.WriteLine($"\n\tMAIN MENU");
+            Console.WriteLine($"\n*********************************");
             Console.WriteLine($"\nChoose one of the options below\n");
             Console.WriteLine($"1. Convert from Fahrenheit to Celsius");
             Console.WriteLine($"2. Convert from Celsius to Fahrenheit");
             Console.WriteLine($"0. Quit\n");
-            int option = ReadInteger(0,2);
+            Console.WriteLine($"*********************************");
+            int option = Utilities.Utils.ReadInteger(0,2);
             return option;
         }
 

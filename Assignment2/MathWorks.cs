@@ -3,6 +3,8 @@
 /// Created on: 2024-02-01 00:00:00
 /// Author: Samuel Jeffman
 /// </summary>
+/// 
+using Utilities;
 
 namespace Assignment2
 {
@@ -94,7 +96,7 @@ namespace Assignment2
         /// </summary>
         /// <param name="start"></param>
         /// <param name="limit"></param>
-        public void PrintMultiplicationTable(int[] range)
+        private void PrintMultiplicationTable(int[] range)
         {
             int start = range[0];
             int end = range[1];
@@ -103,86 +105,25 @@ namespace Assignment2
             {
                 for(int j = start; j <= end; j++)
                 {
-                    Console.Write($"{i}*{j}: {i * j, 6:d}     ");
+                    Console.Write($"{i}*{j}: {i * j, 3:d}     ");
                 }
                 Console.WriteLine();
             }
-        }
-
-        /// <summary>
-        /// Asks if user want to continue or quit.
-        /// </summary>
-        /// <returns></returns>
-        private bool ExitCalculation()
-        {
-            Console.WriteLine("Run again(y/n)?");
-            string? answer = Console.ReadLine();
-            //maybe a do while here??????????????????????????????????????????????????????????
-            if (answer != null)
-            {
-                answer = answer?.Trim();
-            }
-
-            char response = ((answer is not null && answer.Length > 0) ? answer[0] : '\0');
-
-            if ((response == 'y') || (response == 'Y'))
-            {
-                Console.Clear();
-                return false; //Run again
-            }
-            else
-            {
-                return true; //Exit
-            }
-        }
-
-        /// <summary>
-        /// Read input as Integer and do check for datatype.
-        /// </summary>
-        /// <returns></returns>
-        private int ReadInteger()
-        {
-            int input;
-            bool isInt;
-            do
-            {
-                string? str = Console.ReadLine();
-                isInt = int.TryParse(str, out input);
-                if (!isInt)
-                {
-                    Console.WriteLine("Invalid input, not integer!");
-                }
-            }
-            while (!isInt); //Continue until input is of datatype int
-            return input;
-        }
-
-        /// <summary>
-        /// Returns two integers
-        /// </summary>
-        private int[] ReadTwoIntegers()
-        {
-            int[] ints = new int[2];
-            Console.WriteLine("Enter first number:");
-            ints[0] = ReadInteger();
-            Console.WriteLine("Enter second number:");
-            ints[1] = ReadInteger();
-
-            return ints;
         }
 
         public void Calculate()
         {
             do
             {
-                range = ReadTwoIntegers();
+                Console.WriteLine("**********Let us do some maths!**********");
+                range = Utilities.Utils.ReadTwoIntegers();
                 SumNumbers(range);
                 PrintEvenNumbers(range);
                 PrintOddNumbers(range);
                 CalculateSquareRoot(range);
                 PrintMultiplicationTable(range);
             }
-            while(!ExitCalculation());
+            while(!Utilities.Utils.RunAgain());
         }
     }
 }

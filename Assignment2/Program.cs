@@ -8,6 +8,7 @@
             StringFunctions stringFunctions = new ();
             MathWorks mathWorks = new ();
             Scheduler employee1 = new("John", 2, 1);
+            Scheduler employee2 = new("Carl", 5, 7);
 
             temperatureConverter.Run();
             Pause();
@@ -16,6 +17,8 @@
             mathWorks.Calculate();
             Pause();
             employee1.Run();
+            Pause();
+            employee2.Run();
         }
 
         /// <summary>
